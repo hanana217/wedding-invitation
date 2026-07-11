@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>دعوة زفاف | صلاح الدين ومريم</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #e3d1d4; /* Dusty rose table backdrop */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(10px, 4vw, 20px);
+      position: relative;
+      background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(250, 240, 242, 0.5) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(160, 120, 130, 0.2) 0%, transparent 60%);
+    }
+
+    /* ========== VINTAGE PINK LEAF & DUST ANIMATION ========== */
+    .petals-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+
+    .petal {
+      position: absolute; width: 20px; height: 20px;
+      border-radius: 100% 0 100% 0; opacity: 0.6;
+      animation: fallPetal linear infinite; transform: rotate(45deg);
+      box-shadow: 0 4px 10px rgba(120, 80, 90, 0.2);
+    }
+
+    /* Faded vintage pinks, rose golds, and soft burgundy tones */
+    .petal:nth-child(1) { left: 5%; width: 18px; height: 18px; animation-duration: 14s; animation-delay: 0s; background: radial-gradient(circle at 30% 30%, #e0b8c0, #bd8a95); }
+    .petal:nth-child(2) { left: 15%; width: 24px; height: 24px; animation-duration: 17s; animation-delay: -3s; background: radial-gradient(circle at 30% 30%, #ecd4d8, #c99ea6); }
+    .petal:nth-child(3) { left: 28%; width: 16px; height: 16px; animation-duration: 13s; animation-delay: -6s; background: radial-gradient(circle at 30% 30%, #d4a7b0, #a8727d); }
+    .petal:nth-child(4) { left: 40%; width: 20px; height: 20px; animation-duration: 16s; animation-delay: -9s; background: radial-gradient(circle at 30% 30%, #c4919a, #9c606a); }
+    .petal:nth-child(5) { left: 52%; width: 26px; height: 26px; animation-duration: 18s; animation-delay: -2s; background: radial-gradient(circle at 30% 30%, #b87c86, #8a4f59); }
+    .petal:nth-child(6) { left: 65%; width: 19px; height: 19px; animation-duration: 15s; animation-delay: -7s; background: radial-gradient(circle at 30% 30%, #d1aeb4, #b08188); }
+    .petal:nth-child(7) { left: 75%; width: 22px; height: 22px; animation-duration: 19s; animation-delay: -11s; background: radial-gradient(circle at 30% 30%, #e3c5c9, #c499a1); }
+    .petal:nth-child(8) { left: 88%; width: 17px; height: 17px; animation-duration: 12s; animation-delay: -4s; background: radial-gradient(circle at 30% 30%, #c79ba3, #a16c76); }
+    .petal:nth-child(9) { left: 10%; width: 23px; height: 23px; animation-duration: 20s; animation-delay: -13s; background: radial-gradient(circle at 30% 30%, #ba828c, #915560); }
+    .petal:nth-child(10) { left: 45%; width: 15px; height: 15px; animation-duration: 11s; animation-delay: -5s; background: radial-gradient(circle at 30% 30%, #e6d0d4, #cc9ea7); }
+    .petal:nth-child(11) { left: 70%; width: 25px; height: 25px; animation-duration: 21s; animation-delay: -16s; background: radial-gradient(circle at 30% 30%, #a35d6a, #7a3a46); }
+    .petal:nth-child(12) { left: 33%; width: 20px; height: 20px; animation-duration: 15s; animation-delay: -1s; background: radial-gradient(circle at 30% 30%, #d4aab2, #ab7680); }
+
+    @keyframes fallPetal {
+      0% { transform: translateY(-10vh) rotate(0deg) scale(0.8); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(720deg) scale(0.4); opacity: 0; }
+    }
+
+    /* ========== ENVELOPE ========== */
+    .envelope-container {
+      position: relative;
+      width: 100%;
+      max-width: min(560px, 94vw);
+      perspective: 2200px;
+      z-index: 30;
+      margin: auto;
+      filter: drop-shadow(0 35px 50px rgba(60, 40, 50, 0.4));
+    }
+
+    .envelope {
+      position: relative;
+      width: 100%;
+      height: clamp(380px, 78vh, 430px);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.9s cubic-bezier(0.25, 1, 0.3, 1);
+      border-radius: 4px; 
+    }
+
+    .envelope.opened { transform: rotateX(180deg); }
+
+    .face {
+      position: absolute;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 4px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+
+    /* FRONT DESIGN: Aged Vintage Pink */
+    .envelope-front {
+      background-color: #f0e1e3;
+      /* Vignette effect for aged edges */
+      background-image: radial-gradient(circle at center, transparent 30%, rgba(130, 90, 100, 0.4) 130%);
+      border: 4px double #c49ba2; /* Vintage rose gold double border */
+      box-shadow: inset 0 0 60px rgba(160, 110, 120, 0.2);
+      z-index: 2;
+    }
+
+    .flap-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 60%; 
+      filter: drop-shadow(0 15px 15px rgba(100, 60, 70, 0.3));
+      z-index: 10;
+    }
+    
+    .flap {
+      width: 100%; height: 100%;
+      background-color: #f0e1e3;
+      background-image: radial-gradient(circle at top, rgba(255,255,255,0.4) 0%, rgba(130, 90, 100, 0.3) 150%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .front-body {
+      position: absolute;
+      top: 10%; /* Moved to Top Center */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      gap: 10px; width: 100%;
+      z-index: 20; 
+    }
+
+    .front-doves {
+      width: clamp(160px, 45vw, 240px);
+      height: auto; max-height: 200px;
+      object-fit: contain;
+      /* Pink vintage drop shadow */
+      filter: drop-shadow(0 6px 10px rgba(100, 60, 70, 0.3));
+    }
+
+    .wedding-label {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(14px, 4vw, 20px);
+      font-weight: 700; font-style: italic;
+      letter-spacing: clamp(3px, 1.5vw, 6px);
+      text-transform: uppercase;
+      color: #5c353c; /* Vintage dark rose brown */
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+      margin-top: 2px;
+    }
+
+    /* BACK (INVITATION) */
+    .envelope-back {
+      background: #fdf7f8; /* Soft pink-ivory */
+      border: 4px double #d6b8be;
+      transform: rotateX(180deg);
+      overflow-y: auto; overflow-x: hidden;
+      height: auto; max-height: min(640px, 88vh);
+      box-shadow: 0 35px 60px rgba(80, 50, 60, 0.25);
+      justify-content: safe center;
+      padding: clamp(24px, 6vw, 42px) clamp(16px, 5vw, 30px);
+      
+      /* Subtle vintage ruled lines */
+      background-image: linear-gradient(#f2e1e4 1px, transparent 1px);
+      background-size: 100% 48px; background-position: 0 20px;
+      
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .envelope-back::-webkit-scrollbar { display: none; }
+
+    .invitation-content { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    
+    /* Elegant vintage inner borders */
+    .invitation-content::before { content: ""; position: absolute; top: -10px; bottom: -10px; left: -5px; right: -5px; border: 1px solid #d6b8be; pointer-events: none; }
+    .invitation-content::after { content: ""; position: absolute; top: -6px; bottom: -6px; left: -1px; right: -1px; border: 1px solid #ead0d5; pointer-events: none; }
+
+    .dua { font-family: 'Amiri', serif; font-size: clamp(16px, 4.5vw, 22px); line-height: 2; color: #70474f; font-style: italic; margin-bottom: clamp(10px, 3vw, 16px); padding-top: 10px; }
+    
+    .divider { display: flex; align-items: center; justify-content: center; gap: clamp(10px, 3vw, 18px); margin: clamp(14px, 4vw, 22px) 0; }
+    .divider::before, .divider::after { content: ""; width: clamp(40px, 12vw, 70px); height: 1px; background: #c9a6ac; }
+    .divider svg { width: 20px; height: 20px; fill: #9e737b; flex-shrink: 0; }
+
+    .names-row { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: clamp(12px, 4vw, 24px); margin: clamp(12px, 3vw, 18px) 0 clamp(20px, 5vw, 30px); width: 100%; }
+    .name-card { display: flex; flex-direction: column; align-items: center; }
+    .name { font-family: 'Amiri', serif; font-size: clamp(38px, 12vw, 64px); font-weight: 700; color: #4a272e; line-height: 1; text-shadow: 1px 1px 0px rgba(210, 180, 190, 0.5); }
+    .name-label { font-family: 'Cormorant Garamond', serif; font-size: clamp(10px, 2.5vw, 12px); font-weight: 600; color: #a17880; letter-spacing: clamp(2px, 1vw, 4px); margin-top: 8px; }
+    .and { font-family: 'Amiri', serif; font-size: clamp(26px, 8vw, 40px); color: #8c6068; flex-shrink: 0; margin: 0 clamp(4px, 1vw, 8px); }
+
+    .countdown { display: flex; align-items: center; justify-content: center; gap: clamp(3px, 1vw, 6px); margin: clamp(18px, 5vw, 28px) auto clamp(14px, 4vw, 20px); background: #faf0f2; padding: clamp(12px, 3.5vw, 20px) clamp(12px, 4vw, 26px); border-radius: 2px; border: 1px solid #dec2c7; box-shadow: inset 0 0 10px rgba(200, 160, 170, 0.1); max-width: 100%; }
+    .cd-unit { display: flex; flex-direction: column; align-items: center; }
+    .cd-unit .num { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 6.5vw, 34px); color: #5c353c; font-weight: 600; }
+    .cd-unit .lbl { font-family: 'Cormorant Garamond', serif; font-size: clamp(9px, 2.2vw, 11px); color: #9c7179; letter-spacing: 1px; font-weight: 500; }
+    .cd-sep { width: 1px; height: clamp(20px, 5vw, 30px); background: #e0c5ca; margin: 0 clamp(2px, 0.8vw, 4px); flex-shrink: 0; }
+
+    .calendar-card { background: #fdf7f8; border-radius: 2px; padding: clamp(10px, 3vw, 16px) clamp(6px, 2vw, 12px); margin: clamp(10px, 3vw, 16px) auto; border: 1px solid #d9bdc3; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: clamp(2px, 1vw, 4px); width: 100%; justify-items: center; }
+    .cal-dow { font-family: 'Cormorant Garamond', serif; font-size: clamp(9px, 2.2vw, 11px); color: #8c6068; font-weight: 600; width: 100%; }
+    .cal-day { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; font-size: clamp(12px, 3.5vw, 16px); font-family: 'Amiri', serif; color: #523137; position: relative; width: 100%; }
+    .heart-day { position: relative; font-weight: 700; }
+    .heart-day::before { content: "♥"; position: absolute; font-size: clamp(22px, 6.5vw, 32px); color: #ad5a69; opacity: 0.85; z-index: 5; top: 50%; left: 50%; transform: translate(-50%, -50%); text-shadow: 0 2px 4px rgba(120, 50, 60, 0.2); }
+    .heart-day span { position: relative; z-index: 6; color: #fdf7f8; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+
+    .location { margin-top: clamp(10px, 3.5vw, 16px); background: #fcf2f4; padding: clamp(16px, 4.5vw, 22px) clamp(10px, 3vw, 16px); border-radius: 2px; border: 1px dashed #c9a6ac; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .venue-title { font-family: 'Amiri', serif; font-size: clamp(20px, 5.5vw, 26px); color: #4a272e; }
+    .venue-address { font-family: 'Cormorant Garamond', serif; font-size: clamp(13px, 3.5vw, 16px); color: #70474f; margin: 6px 0 clamp(12px, 3.5vw, 18px); font-weight: 500; }
+    .map-btn { display: inline-block; background: #a3757e; color: #fdf7f8; padding: clamp(8px, 2.5vw, 10px) clamp(18px, 6vw, 28px); border-radius: 2px; text-decoration: none; font-size: clamp(11px, 2.8vw, 13px); letter-spacing: 1px; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 10px rgba(80, 50, 60, 0.2); transition: background 0.3s; }
+    .map-btn:hover { background: #875c65; }
+
+    .footer-msg { font-family: 'Amiri', serif; font-size: clamp(18px, 4.8vw, 24px); color: #5c353c; margin-top: clamp(16px, 4.5vw, 24px); }
+    .footer-names { font-family: 'Playfair Display', serif; font-style: italic; color: #8c6068; margin-top: 6px; font-size: clamp(13px, 3.5vw, 16px); letter-spacing: 2px; padding-bottom: 10px; }
+    #dateText { width: 100%; font-family: 'Amiri', serif; color: #8c6068; font-size: clamp(13px, 3.5vw, 16px); margin-top: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="petals-container">
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+</div>
+
+<div class="envelope-container">
+  <div class="envelope" id="envelope">
+    <!-- FRONT -->
+    <div class="face envelope-front">
+      <!-- The new Deep V Flap -->
+      <div class="flap-container">
+        <div class="flap"></div>
+      </div>
+      
+      <!-- The doves sit at the top center! -->
+      <div class="front-body">
+        <img src="doves.png" alt="Doves" class="front-doves" id="frontImage">
+        <span class="wedding-label">Wedding Invitation</span>
+      </div>
+    </div>
+
+    <!-- BACK / INVITATION -->
+    <div class="face envelope-back">
+      <div class="invitation-content">
+        <p class="dua">بارك الله لكما وبارك عليكما<br>وجمع بينكما في الخير</p>
+        <div class="divider">
+          <svg viewBox="0 0 24 24"><path d="M12 21l-9-9 9-9 9 9-9 9z"/></svg>
+        </div>
+
+        <div class="names-row">
+          <div class="name-card">
+            <span class="name" id="groomName">صلاح الدين</span>
+    
+          </div> 
+          <div class="and">و</div>
+          <div class="name-card">
+            <span class="name" id="brideName">مريم</span>
+      
+          </div>
+        </div>
+
+        <div class="countdown">
+          <div class="cd-unit"><span class="num" id="cdDays">--</span><span class="lbl">يوم</span></div>
+          <div class="cd-sep"></div>
+          <div class="cd-unit"><span class="num" id="cdHours">--</span><span class="lbl">ساعة</span></div>
+          <div class="cd-sep"></div>
+          <div class="cd-unit"><span class="num" id="cdMinutes">--</span><span class="lbl">دقيقة</span></div>
+          <div class="cd-sep"></div>
+          <div class="cd-unit"><span class="num" id="cdSeconds">--</span><span class="lbl">ثانية</span></div>
+        </div>
+
+        <div class="calendar-card">
+          <div class="cal-grid" id="calGrid"></div>
+          <p id="dateText"></p>
+        </div>
+
+        <div class="location">
+          <h3 class="venue-title" id="venueTitle">قاعة الأفراح</h3>
+          <p class="venue-address" id="venueAddress">قاعة الابرار، مرزوقة</p>
+          <a class="map-btn" id="mapLink" href="#" target="_blank">📍 افتح في خرائط جوجل</a>
+        </div>
+
+        <p class="footer-msg">نسعد بحضوركم لمشاركتنا فرحتنا</p>
+        <p class="footer-names" id="footerNames"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const INVITE = {
+      brideName: "مريم",
+      groomName: "صلاح الدين",
+      year: 2026,
+      monthIndex: 10,
+      day: 1,
+      hour: 0,
+      minute: 0,
+      venueTitle: "قاعة الأفراح",
+      venueAddress: "قاعة الابرار، مرزوقة",
+      googleMapsQuery: "https://maps.app.goo.gl/4rXvPVtJViPCFNu69"
+    };
+
+    document.getElementById('brideName').textContent = INVITE.brideName;
+    document.getElementById('groomName').textContent = INVITE.groomName;
+
+    document.getElementById('venueTitle').textContent = INVITE.venueTitle;
+    document.getElementById('venueAddress').textContent = INVITE.venueAddress;
+    document.getElementById('mapLink').href = INVITE.googleMapsQuery;
+
+    const arabicMonths = ["جانفي","فيفري","مارس","أفريل","ماي","جوان","جويلية","أوت","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+    const arabicDows = ["أحد","اثنين","ثلاثاء","أربعاء","خميس","جمعة","سبت"];
+    const weddingDate = new Date(INVITE.year, INVITE.monthIndex, INVITE.day, INVITE.hour, INVITE.minute, 0);
+    document.getElementById('dateText').textContent = arabicMonths[INVITE.monthIndex] + " " + INVITE.year + "  ·  يوم " + arabicDows[weddingDate.getDay()];
+
+    function pad2(n){ return n<10?'0'+n:String(n); }
+    function updateCountdown(){
+      const now = new Date();
+      let diff = weddingDate - now;
+      if(diff<0) diff=0;
+      document.getElementById('cdDays').textContent = pad2(Math.floor(diff/(1000*60*60*24)));
+      document.getElementById('cdHours').textContent = pad2(Math.floor((diff/(1000*60*60))%24));
+      document.getElementById('cdMinutes').textContent = pad2(Math.floor((diff/(1000*60))%60));
+      document.getElementById('cdSeconds').textContent = pad2(Math.floor((diff/1000)%60));
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+
+    const grid = document.getElementById('calGrid');
+    arabicDows.forEach(d=>{
+      const el = document.createElement('div');
+      el.className='cal-dow'; el.textContent=d; grid.appendChild(el);
+    });
+    const firstDay = new Date(INVITE.year, INVITE.monthIndex, 1).getDay();
+    const daysInMonth = new Date(INVITE.year, INVITE.monthIndex+1, 0).getDate();
+    for(let i=0;i<firstDay;i++){ const empty=document.createElement('div'); empty.className='cal-day'; grid.appendChild(empty); }
+    for(let d=1; d<=daysInMonth; d++){
+      const cell = document.createElement('div');
+      cell.className = 'cal-day';
+      if(d === INVITE.day) {
+        cell.classList.add('heart-day');
+        cell.innerHTML = `<span>${d}</span>`;
+      } else {
+        cell.textContent = d;
+      }
+      grid.appendChild(cell);
+    }
+
+    const envelopeEl = document.getElementById('envelope');
+    const backFaceEl = document.querySelector('.envelope-back');
+
+    function syncEnvelopeHeight(){
+      if(envelopeEl.classList.contains('opened')){
+        const maxAllowed = Math.min(window.innerHeight * 0.88, 640);
+        const neededHeight = Math.min(backFaceEl.scrollHeight, maxAllowed);
+        envelopeEl.style.height = neededHeight + 'px';
+      } else {
+        envelopeEl.style.height = '';
+      }
+    }
+
+    envelopeEl.addEventListener('click', function(e){
+      this.classList.toggle('opened');
+      syncEnvelopeHeight();
+    });
+
+    window.addEventListener('resize', syncEnvelopeHeight);
+  })();
+</script>
+</body>
+</html>
